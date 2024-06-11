@@ -5,6 +5,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -19,10 +23,19 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.prabhat.introduction.ui.theme.IntroductionTheme
@@ -35,8 +48,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             IntroductionTheme {
                 Scaffold(
-                    modifier = Modifier.fillMaxSize(), topBar = {
-                        TopAppBar(title = {
+                    modifier = Modifier
+                        .fillMaxSize()
+                     , topBar = {
+                        TopAppBar(modifier = Modifier.background(color = Color.Red)
+                            ,  colors = TopAppBarDefaults.topAppBarColors(containerColor = Yellow)
+                            , title = {
                             Text(text = "Demo App")
 
                         }, navigationIcon = {
@@ -45,7 +62,10 @@ class MainActivity : ComponentActivity() {
                             }
                         }, actions = {
                             IconButton(onClick = { /*TODO*/ }) {
-                                Icon(imageVector = Icons.Filled.Notifications, contentDescription = null)
+                                Icon(
+                                    imageVector = Icons.Filled.Notifications,
+                                    contentDescription = null
+                                )
                             }
                             IconButton(onClick = { /*TODO*/ }) {
                                 Icon(imageVector = Icons.Filled.Search, contentDescription = null)
@@ -54,22 +74,23 @@ class MainActivity : ComponentActivity() {
                         )
                     }, floatingActionButton = {
                         FloatingActionButton(onClick = { /*TODO*/ }) {
-                            
+
                             IconButton(onClick = { /*TODO*/ }) {
-                                Icon(imageVector = Icons.Filled.Add , contentDescription = "")
+                                Icon(imageVector = Icons.Filled.Add, contentDescription = "")
 
                             }
-                            
+
                         }
                     }
 
                 ) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier
-                            .padding(innerPadding)
-                            .size(91.dp)
-                    )
+                    innerPadding
+
+                    Row(modifier = Modifier.fillMaxSize().background(color = Red),
+                        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+
+                        ShowSwitch()
+                    }
                 }
             }
         }
@@ -97,4 +118,24 @@ fun GreetingPreview() {
     IntroductionTheme {
         Greeting("Android")
     }
+}
+
+@Composable
+fun ShowSwitch() {
+
+    val isChecked = remember {
+        mutableStateOf(true)
+    }
+    Switch(
+        checked = isChecked.value,
+        onCheckedChange = {
+            isChecked.value = it
+        },
+        modifier = Modifier
+            .size(40.dp)
+//            .padding(100.dp)
+
+
+
+    )
 }
