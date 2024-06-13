@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+
+
+    id("com.google.devtools.ksp")
+    id ("com.google.dagger.hilt.android")
 }
 
 android {
@@ -66,4 +70,58 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Dagger Hilt
+ /*   implementation ("com.google.dagger:hilt-android:2.51.1")
+//    kapt ("com.google.dagger:hilt-compiler:2.51")
+    ksp("com.google.dagger:hilt-android-compiler:2.51.1")
+//    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+//    ksp("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")*/
+
+
+    implementation ("com.google.dagger:hilt-android:2.50")
+//    kapt ("com.google.dagger:hilt-compiler:2.51")
+    ksp("com.google.dagger:hilt-android-compiler:2.50")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+
+
+    //Room
+  /*  implementation ("androidx.room:room-ktx:$room_version")
+    implementation ("androidx.room:room-runtime:$room_version")
+    ksp ("androidx.room:room-compiler:$room_version")*/
+
+    // ViewModel
+  /*  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"*/
+
+
+    //retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    //moshi
+    implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
+    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+
+
+
+    //kotlin Coroutines
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+
+    // android ktx
+    implementation ("androidx.activity:activity-ktx:1.9.0")
+
+    //hilt viewmodel
+//    implementation ("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+
+    //pager
+  /*  implementation ("com.google.accompanist:accompanist-pager:$accompanist_version")
+    implementation ("com.google.accompanist:accompanist-pager-indicators:$accompanist_version")*/
+
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+
 }
