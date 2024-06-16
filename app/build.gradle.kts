@@ -124,4 +124,10 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
 
+    val accompanist_version = "0.34.0"
+
+    implementation ("com.google.accompanist:accompanist-pager:$accompanist_version")
+    implementation ("com.google.accompanist:accompanist-pager-indicators:$accompanist_version")
+
+
 }
