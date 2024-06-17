@@ -14,8 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Introduction"
         tools:targetApi="31">
+        <activity android:name=".navigation.ui.AnotherActivity"/>
         <activity
-            android:name=".viewPager.OnBoardingActivity"
+            android:name=".navigation.ui.NavigationActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Introduction">
